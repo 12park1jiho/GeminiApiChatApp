@@ -1,16 +1,45 @@
-# my_flutter_project
+# AI Chat App
 
-A new Flutter project.
+## 프로젝트 개요
 
-## Getting Started
+이 프로젝트는 Gemini API를 활용한 AI 챗봇 애플리케이션입니다. 사용자는 챗봇과 자연스러운 대화를 나눌 수 있으며, 챗봇은 사용자의 질문에 적절한 답변을 제공합니다. 또한, 사용자는 채팅 기록을 관리하고, 앱의 테마를 변경할 수 있습니다.
 
-This project is a starting point for a Flutter application.
+## 주요 기능
 
-A few resources to get you started if this is your first Flutter project:
+*   **Gemini API 연동:** Gemini API를 활용하여 자연스러운 대화가 가능한 AI 챗봇 기능을 제공합니다.
+*   **채팅 메시지 관리:** 사용자는 챗봇과 나눈 대화 메시지를 확인하고, 삭제할 수 있습니다.
+*   **채팅 기록 삭제:** 사용자는 모든 채팅 기록을 한 번에 삭제할 수 있습니다.
+*   **테마 변경:** 사용자는 앱의 테마를 라이트, 다크, 시스템 설정에 따라 변경할 수 있습니다.
+* **메시지 정렬:** 사용자의 메시지는 오른쪽에, 챗봇의 메시지는 왼쪽에 표시됩니다.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 사용 방법
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1.  앱을 실행합니다.
+2.  하단의 텍스트 필드에 메시지를 입력합니다.
+3.  전송 버튼을 누르거나, 엔터 키를 눌러 메시지를 전송합니다.
+4.  챗봇의 답변을 확인합니다.
+5.  왼쪽 상단의 네비게이션 바를 열어, 채팅 기록 삭제, 테마 변경 등의 기능을 사용할 수 있습니다.
+
+## 설치 방법
+
+1.  Flutter SDK를 설치합니다. ([https://docs.flutter.dev/get-started/install](https://docs.flutter.dev/get-started/install))
+2.  프로젝트를 다운로드하거나, Git을 사용하여 클론합니다.
+3.  프로젝트 디렉토리로 이동합니다.
+4.  의존성 패키지를 설치합니다.
+5.  앱을 실행합니다.
+
+## 기술 스택
+
+*   **Flutter:** UI 프레임워크
+*   **Dart:** 프로그래밍 언어
+*   **Gemini API:** AI 챗봇 기능
+*   **Hive:** 로컬 데이터베이스
+* **Shared Preferences:** 테마 저장
+*   **Git:** 버전 관리
+
+## 기여 방법
+
+이 프로젝트에 기여하고 싶으신 분은 언제든지 환영합니다! 다음 단계를 따라주세요.
+
+1.  프로젝트를 포크합니다.
+2.  새로운 브랜치를 생성합니다.
