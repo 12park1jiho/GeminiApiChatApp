@@ -1,29 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'chat/chat_message.dart';
-import 'chat/chat_page.dart';
-import 'manager/theme_manager.dart';
+import 'models/chat_message.dart';
+import 'screens/chat_screen.dart';
+import 'screens/home_screen.dart'; // HomeScreen import 추가
+import 'utils/theme_manager.dart';
+import 'services/local_storage_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(ChatMessageAdapter());
-  runApp(const MyApp());
+
+  final localStorageService = LocalStorageService();
+  await localStorageService.initializeChatBox();
+
+  runApp(MyApp(localStorageService: localStorageService));
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  final LocalStorageService localStorageService;
+
+  MyApp({required this.localStorageService});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
   final ThemeManager _themeManager = ThemeManager();
+  late LocalStorageService _localStorageService;
 
   @override
   void initState() {
     super.initState();
+    _localStorageService = widget.localStorageService;
     _loadThemeMode();
     _themeManager.addListener(_handleThemeChange);
   }
@@ -64,7 +74,14 @@ class _MyAppState extends State<MyApp> {
         fontFamily: 'Roboto',
       ),
       themeMode: _themeManager.themeMode,
-      home: ChatPage(title: 'AI Chat', themeManager: _themeManager),
+      home: HomeScreen(), // 시작 화면을 HomeScreen으로 변경
+      routes: {
+        '/chat': (context) => ChatScreen(
+          title: 'AI Chat',
+          themeManager: _themeManager,
+          localStorageService: _localStorageService,
+        ), // 채팅 화면 라우트 추가
+      },
     );
   }
 }

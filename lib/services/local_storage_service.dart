@@ -1,8 +1,9 @@
-import 'package:google_generative_ai/google_generative_ai.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:my_flutter_project/chat/chat_message.dart';
+// lib/services/local_storage_service.dart
 
-class ApiManager {
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:my_flutter_project/models/chat_message.dart'; // ChatMessage 모델 import
+
+class LocalStorageService {
   late Box<ChatMessage> _chatMessageBox;
 
   Future<void> initializeChatBox() async {
@@ -23,15 +24,5 @@ class ApiManager {
 
   Future<void> deleteAllChatMessages() async {
     await _chatMessageBox.clear();
-  }
-
-  Future<String> sendMessageToGemini(String text) async {
-    final gemini = GenerativeModel(
-      model: 'gemini-1.5-flash',
-      apiKey: '', // 여기에 실제 API 키를 입력하세요!
-    );
-    final content = [Content.text(text)];
-    final response = await gemini.generateContent(content);
-    return response.text ?? '';
   }
 }
